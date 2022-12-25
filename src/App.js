@@ -1,15 +1,26 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
-
+import { baseURL, apiKey, count } from "./components/constants";
+import Page from "./components/Page.js";
+import axios from "axios";
 function App() {
-  return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+  const [data, setData] = useState()
+
+
+   useEffect(() => {
+     axios.get(`${baseURL}api_key=${apiKey}${count}`)
+     .then(res => {
+       setData(res.data)
+      })
+      .catch(err => {
+        console.error(err);
+      })
+    }, [])  
+    return(
+      <div>
+    {data && <Page data={data}/>}
     </div>
-  );
+    )
 }
 
 export default App;
