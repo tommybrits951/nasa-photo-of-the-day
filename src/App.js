@@ -3,6 +3,7 @@ import "./App.css";
 import { baseURL, apiKey, count } from "./components/constants";
 import Page from "./components/Page.js";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [data, setData] = useState()
 
